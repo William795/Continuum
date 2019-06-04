@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		9277101C22A70274007DF4C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277101B22A70274007DF4C4 /* AppDelegate.swift */; };
-		9277101E22A70274007DF4C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277101D22A70274007DF4C4 /* ViewController.swift */; };
 		9277102122A70274007DF4C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9277101F22A70274007DF4C4 /* Main.storyboard */; };
 		9277102322A70279007DF4C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9277102222A70279007DF4C4 /* Assets.xcassets */; };
 		9277102622A70279007DF4C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9277102422A70279007DF4C4 /* LaunchScreen.storyboard */; };
 		9277103122A70279007DF4C4 /* ContinuumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277103022A70279007DF4C4 /* ContinuumTests.swift */; };
 		9277103C22A70279007DF4C4 /* ContinuumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277103B22A70279007DF4C4 /* ContinuumUITests.swift */; };
+		9277104B22A70619007DF4C4 /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277104A22A70619007DF4C4 /* PostListTableViewController.swift */; };
+		9277104D22A706CB007DF4C4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277104C22A706CB007DF4C4 /* Post.swift */; };
+		9277105022A706EF007DF4C4 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277104F22A706EF007DF4C4 /* PostController.swift */; };
+		9277105622A707BF007DF4C4 /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277105522A707BF007DF4C4 /* CommentController.swift */; };
+		9277105822A707C6007DF4C4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277105722A707C6007DF4C4 /* Comment.swift */; };
+		9277105A22A70E98007DF4C4 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277105922A70E98007DF4C4 /* PostTableViewCell.swift */; };
+		9277105C22A712A6007DF4C4 /* PostDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277105B22A712A6007DF4C4 /* PostDetailTableViewController.swift */; };
+		9277105E22A71A74007DF4C4 /* PostCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277105D22A71A74007DF4C4 /* PostCreationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +43,6 @@
 /* Begin PBXFileReference section */
 		9277101822A70274007DF4C4 /* Continuum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Continuum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9277101B22A70274007DF4C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9277101D22A70274007DF4C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9277102022A70274007DF4C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9277102222A70279007DF4C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9277102522A70279007DF4C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +53,14 @@
 		9277103722A70279007DF4C4 /* ContinuumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ContinuumUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9277103B22A70279007DF4C4 /* ContinuumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinuumUITests.swift; sourceTree = "<group>"; };
 		9277103D22A70279007DF4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9277104A22A70619007DF4C4 /* PostListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTableViewController.swift; sourceTree = "<group>"; };
+		9277104C22A706CB007DF4C4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		9277104F22A706EF007DF4C4 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
+		9277105522A707BF007DF4C4 /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
+		9277105722A707C6007DF4C4 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		9277105922A70E98007DF4C4 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		9277105B22A712A6007DF4C4 /* PostDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailTableViewController.swift; sourceTree = "<group>"; };
+		9277105D22A71A74007DF4C4 /* PostCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +111,10 @@
 		9277101A22A70274007DF4C4 /* Continuum */ = {
 			isa = PBXGroup;
 			children = (
-				9277101B22A70274007DF4C4 /* AppDelegate.swift */,
-				9277101D22A70274007DF4C4 /* ViewController.swift */,
-				9277101F22A70274007DF4C4 /* Main.storyboard */,
-				9277102222A70279007DF4C4 /* Assets.xcassets */,
-				9277102422A70279007DF4C4 /* LaunchScreen.storyboard */,
-				9277102722A70279007DF4C4 /* Info.plist */,
+				9277104922A70339007DF4C4 /* Resources */,
+				9277104E22A706D0007DF4C4 /* Models */,
+				9277105322A7070A007DF4C4 /* Controllers */,
+				9277105422A70714007DF4C4 /* Views */,
 			);
 			path = Continuum;
 			sourceTree = "<group>";
@@ -123,6 +135,63 @@
 				9277103D22A70279007DF4C4 /* Info.plist */,
 			);
 			path = ContinuumUITests;
+			sourceTree = "<group>";
+		};
+		9277104922A70339007DF4C4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9277101B22A70274007DF4C4 /* AppDelegate.swift */,
+				9277102222A70279007DF4C4 /* Assets.xcassets */,
+				9277102422A70279007DF4C4 /* LaunchScreen.storyboard */,
+				9277102722A70279007DF4C4 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9277104E22A706D0007DF4C4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9277104C22A706CB007DF4C4 /* Post.swift */,
+				9277105722A707C6007DF4C4 /* Comment.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9277105122A706F3007DF4C4 /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9277104F22A706EF007DF4C4 /* PostController.swift */,
+				9277105522A707BF007DF4C4 /* CommentController.swift */,
+			);
+			path = ModelControllers;
+			sourceTree = "<group>";
+		};
+		9277105222A706FD007DF4C4 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9277104A22A70619007DF4C4 /* PostListTableViewController.swift */,
+				9277105B22A712A6007DF4C4 /* PostDetailTableViewController.swift */,
+				9277105D22A71A74007DF4C4 /* PostCreationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9277105322A7070A007DF4C4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9277105222A706FD007DF4C4 /* ViewControllers */,
+				9277105122A706F3007DF4C4 /* ModelControllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		9277105422A70714007DF4C4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9277101F22A70274007DF4C4 /* Main.storyboard */,
+				9277105922A70E98007DF4C4 /* PostTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +325,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9277101E22A70274007DF4C4 /* ViewController.swift in Sources */,
+				9277105A22A70E98007DF4C4 /* PostTableViewCell.swift in Sources */,
+				9277104D22A706CB007DF4C4 /* Post.swift in Sources */,
+				9277105822A707C6007DF4C4 /* Comment.swift in Sources */,
+				9277105622A707BF007DF4C4 /* CommentController.swift in Sources */,
+				9277105022A706EF007DF4C4 /* PostController.swift in Sources */,
 				9277101C22A70274007DF4C4 /* AppDelegate.swift in Sources */,
+				9277105C22A712A6007DF4C4 /* PostDetailTableViewController.swift in Sources */,
+				9277104B22A70619007DF4C4 /* PostListTableViewController.swift in Sources */,
+				9277105E22A71A74007DF4C4 /* PostCreationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +509,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Continuum/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Continuum/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -450,7 +526,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Continuum/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Continuum/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
