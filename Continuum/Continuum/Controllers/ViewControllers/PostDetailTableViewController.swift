@@ -11,99 +11,85 @@ import UIKit
 class PostDetailTableViewController: UITableViewController {
 
     @IBOutlet weak var postImageView: UIImageView!
-    @IBOutlet weak var postCaptionLabel: UILabel!
-    @IBOutlet weak var postCommentNumber: UILabel!
-    @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var followPostButton: UIButton!
+    @IBOutlet weak var buttonsStackView: UIStackView!
     
-    var post: Post?
+    var post: Post? {
+        didSet {
+            loadViewIfNeeded()
+            updateViews()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
+    func updateViews () {
         guard let post = post else {return}
         postImageView.image = post.photo
-        postCaptionLabel.text = post.caption
-        postCommentNumber.text = "\(post.comment.count)"
-        commentTextField.text = ""
-
-    }
-
-    @IBAction func commentAddButtonTapped(_ sender: Any) {
-        guard let text = commentTextField.text, let post = post else {return}
-        if text.isEmpty {
-            return
-        }
-        PostController.shared.addComment(text: text, post: post) { (comment) in
-            
-        }
         tableView.reloadData()
-        commentTextField.text = ""
+        updateFollowPostButton()
     }
     
+    func updateFollowPostButton() {
+        guard let post = post else {return}
+        //
+    }
+    
+    func presentCommentAlertController() {
+        
+        let alertController = UIAlertController(title: "Add Comment", message: "Write what you want", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.placeholder = "witty comment here"
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+        let commentAction =  UIAlertAction(title: "Comment", style: .default) { (_) in
+            guard let commentText = alertController.textFields?.first?.text,
+            !commentText.isEmpty,
+                let post = self.post else {return}
+            PostController.shared.addComment(text: commentText, post: post, completion: { (comment) in
+            })
+            self.tableView.reloadData()
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(commentAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+
+    @IBAction func commentButtonTapped(_ sender: Any) {
+        presentCommentAlertController()
+    }
+    
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        guard let comment = post?.caption else { return }
+        let shareSheet = UIActivityViewController(activityItems: [comment], applicationActivities: nil)
+        present(shareSheet, animated: true, completion: nil)
+    }
+    
+    @IBAction func followButtonTapped(_ sender: Any) {
+        guard let post = post else {return}
+    }
     // MARK: - Table view data source
-
-
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return post?.comment.count ?? 0
+        return post?.comments.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath)
 
         // Configure the cell...
-        guard let currentComment = post?.comment[indexPath.row] else {return UITableViewCell()}
+        guard let currentComment = post?.comments[indexPath.row] else {return UITableViewCell()}
         
-        cell.textLabel?.text = "\(String(describing: currentComment.timeStamp))"
-        cell.detailTextLabel?.text = currentComment.comment
+        cell.textLabel?.text = currentComment.comment
+        cell.detailTextLabel?.text = currentComment.timeStamp.stringWith(dateStyle: .medium, timeStyle: .short)
         
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

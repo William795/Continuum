@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import CloudKit
 
 class Post {
     var photoData: Data?
     let timeStamp: Date
     let caption: String
-    var comment: [Comment]
+    var comments: [Comment]
     
     var photo: UIImage? {
         get {
@@ -23,11 +24,25 @@ class Post {
             photoData = newValue?.jpegData(compressionQuality: 0.5)
         }
     }
-    init(photoData: Data?, timeStamp: Date, caption: String, comment: [Comment], photo: UIImage) {
-        self.photoData = photoData
+    init(photo: UIImage, timeStamp: Date = Date(), caption: String, comment: [Comment]) {
         self.timeStamp = timeStamp
         self.caption = caption
-        self.comment = comment
+        self.comments = comment
         self.photo = photo
+    }
+}
+
+extension Post: SearchableRecord {
+    func matches(searchTerm: String) -> Bool {
+        if caption.contains(searchTerm) {
+            return true
+        }else {
+            for comment in comments {
+                if comment.matches(searchTerm: searchTerm) {
+                    return true
+                }
+            }
+        }
+        return false
     }
 }

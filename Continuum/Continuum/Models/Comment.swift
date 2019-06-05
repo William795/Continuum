@@ -13,9 +13,15 @@ class Comment {
     var timeStamp: Date
     weak var post: Post?
     
-    init(comment: String, timeStamp: Date = Date.init(), post: Post) {
+    init(comment: String, timeStamp: Date = Date(), post: Post) {
         self.comment = comment
         self.timeStamp = timeStamp
         self.post = post
+    }
+}
+
+extension Comment: SearchableRecord {
+    func matches(searchTerm: String) -> Bool {
+        return comment.contains(searchTerm)
     }
 }

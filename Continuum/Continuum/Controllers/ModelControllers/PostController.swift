@@ -20,12 +20,16 @@ class PostController {
         let newComment = Comment(comment: text, post: post)
         
         //append comment to post array
-        post.comment.append(newComment)
+        post.comments.append(newComment)
     }
     
     func createPostWith(image: UIImage, caption: String, completion: @escaping (Post?) -> ()) {
-        let newPost = Post(photoData: nil, timeStamp: Date(), caption: caption, comment: [], photo: image)
+        let newPost = Post(photo: image, timeStamp: Date(), caption: caption, comment: [])
         
         posts.append(newPost)
+    }
+    
+    func fetchComments(for post: Post, completion: @escaping ([Comment]?) -> ()) {
+        
     }
 }
