@@ -21,6 +21,7 @@ class PostListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         postSearchBar.delegate = self
+        performFullSync(completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,16 +36,26 @@ class PostListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return PostController.shared.posts.count
+        return dataSource.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell
-
-        let post = PostController.shared.posts[indexPath.row]
+        let post = dataSource[indexPath.row] as? Post
         cell?.post = post
 
         return cell ?? UITableViewCell()
+    }
+    
+    func performFullSync(completion: ((Bool) -> Void)?){
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        PostController.shared.fetchPosts { (posts) in
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                self.tableView.reloadData()
+                completion?(posts != nil)
+            }
+        }
     }
     // MARK: - Navigation
 

@@ -38,7 +38,6 @@ class PostCreationViewController: UIViewController {
             return
         }
         PostController.shared.createPostWith(image: image, caption: text) { (post) in }
-            self.postCaptionLabel.text = ""
             self.tabBarController?.selectedIndex = 0
     }
     @IBAction func cancleButtonTapped(_ sender: Any) {

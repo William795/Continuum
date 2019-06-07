@@ -16,11 +16,11 @@
 		9277104B22A70619007DF4C4 /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277104A22A70619007DF4C4 /* PostListTableViewController.swift */; };
 		9277104D22A706CB007DF4C4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277104C22A706CB007DF4C4 /* Post.swift */; };
 		9277105022A706EF007DF4C4 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277104F22A706EF007DF4C4 /* PostController.swift */; };
-		9277105622A707BF007DF4C4 /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277105522A707BF007DF4C4 /* CommentController.swift */; };
 		9277105822A707C6007DF4C4 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277105722A707C6007DF4C4 /* Comment.swift */; };
 		9277105A22A70E98007DF4C4 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277105922A70E98007DF4C4 /* PostTableViewCell.swift */; };
 		9277105C22A712A6007DF4C4 /* PostDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277105B22A712A6007DF4C4 /* PostDetailTableViewController.swift */; };
 		9277105E22A71A74007DF4C4 /* PostCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9277105D22A71A74007DF4C4 /* PostCreationViewController.swift */; };
+		92A8EDEF22A9B700001044F3 /* CKRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A8EDEE22A9B700001044F3 /* CKRecordExtension.swift */; };
 		92E4149622A858840025FFA1 /* photoSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4149522A858840025FFA1 /* photoSelectorViewController.swift */; };
 		92E4149A22A863750025FFA1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E4149922A863750025FFA1 /* CloudKit.framework */; };
 		92E4149C22A8669F0025FFA1 /* UIViewControllerExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E4149B22A8669F0025FFA1 /* UIViewControllerExtention.swift */; };
@@ -61,11 +61,11 @@
 		9277104A22A70619007DF4C4 /* PostListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTableViewController.swift; sourceTree = "<group>"; };
 		9277104C22A706CB007DF4C4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		9277104F22A706EF007DF4C4 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
-		9277105522A707BF007DF4C4 /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		9277105722A707C6007DF4C4 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		9277105922A70E98007DF4C4 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		9277105B22A712A6007DF4C4 /* PostDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailTableViewController.swift; sourceTree = "<group>"; };
 		9277105D22A71A74007DF4C4 /* PostCreationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationViewController.swift; sourceTree = "<group>"; };
+		92A8EDEE22A9B700001044F3 /* CKRecordExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKRecordExtension.swift; sourceTree = "<group>"; };
 		92E4149522A858840025FFA1 /* photoSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoSelectorViewController.swift; sourceTree = "<group>"; };
 		92E4149722A863720025FFA1 /* Continuum.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Continuum.entitlements; sourceTree = "<group>"; };
 		92E4149922A863750025FFA1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -154,10 +154,10 @@
 		9277104922A70339007DF4C4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				9277101B22A70274007DF4C4 /* AppDelegate.swift */,
-				9277102222A70279007DF4C4 /* Assets.xcassets */,
-				9277102422A70279007DF4C4 /* LaunchScreen.storyboard */,
 				9277102722A70279007DF4C4 /* Info.plist */,
+				9277102222A70279007DF4C4 /* Assets.xcassets */,
+				9277101B22A70274007DF4C4 /* AppDelegate.swift */,
+				9277102422A70279007DF4C4 /* LaunchScreen.storyboard */,
 				92E4149B22A8669F0025FFA1 /* UIViewControllerExtention.swift */,
 				92E4149D22A86E840025FFA1 /* SearchableRecords.swift */,
 				92E4149F22A87BB60025FFA1 /* DateExtention.swift */,
@@ -170,6 +170,7 @@
 			children = (
 				9277104C22A706CB007DF4C4 /* Post.swift */,
 				9277105722A707C6007DF4C4 /* Comment.swift */,
+				92A8EDEE22A9B700001044F3 /* CKRecordExtension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				9277104F22A706EF007DF4C4 /* PostController.swift */,
-				9277105522A707BF007DF4C4 /* CommentController.swift */,
 			);
 			path = ModelControllers;
 			sourceTree = "<group>";
@@ -367,9 +367,9 @@
 				92E4149E22A86E840025FFA1 /* SearchableRecords.swift in Sources */,
 				9277104D22A706CB007DF4C4 /* Post.swift in Sources */,
 				9277105822A707C6007DF4C4 /* Comment.swift in Sources */,
-				9277105622A707BF007DF4C4 /* CommentController.swift in Sources */,
 				9277105022A706EF007DF4C4 /* PostController.swift in Sources */,
 				9277101C22A70274007DF4C4 /* AppDelegate.swift in Sources */,
+				92A8EDEF22A9B700001044F3 /* CKRecordExtension.swift in Sources */,
 				92E4149622A858840025FFA1 /* photoSelectorViewController.swift in Sources */,
 				9277105C22A712A6007DF4C4 /* PostDetailTableViewController.swift in Sources */,
 				9277104B22A70619007DF4C4 /* PostListTableViewController.swift in Sources */,

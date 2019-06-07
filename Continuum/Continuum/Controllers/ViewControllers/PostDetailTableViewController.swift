@@ -9,7 +9,7 @@
 import UIKit
 
 class PostDetailTableViewController: UITableViewController {
-
+    
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var followPostButton: UIButton!
     @IBOutlet weak var buttonsStackView: UIStackView!
@@ -23,12 +23,14 @@ class PostDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        guard let post = post else {return}
+        PostController.shared.fetchComments(for: post) { (_) in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
-
+    
     func updateViews () {
         guard let post = post else {return}
         postImageView.image = post.photo
@@ -38,7 +40,15 @@ class PostDetailTableViewController: UITableViewController {
     
     func updateFollowPostButton() {
         guard let post = post else {return}
-        //
+        
+        PostController.shared.checkForSubscription(to: post) { (found) in
+            DispatchQueue.main.async {
+                let followPostButtonText = found ? "Unfollow Post" : "Follow Post"
+                self.followPostButton.setTitle(followPostButtonText, for: .normal)
+                
+                self.buttonsStackView.layoutIfNeeded()
+            }
+        }
     }
     
     func presentCommentAlertController() {
@@ -50,7 +60,7 @@ class PostDetailTableViewController: UITableViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
         let commentAction =  UIAlertAction(title: "Comment", style: .default) { (_) in
             guard let commentText = alertController.textFields?.first?.text,
-            !commentText.isEmpty,
+                !commentText.isEmpty,
                 let post = self.post else {return}
             PostController.shared.addComment(text: commentText, post: post, completion: { (comment) in
             })
@@ -60,7 +70,7 @@ class PostDetailTableViewController: UITableViewController {
         alertController.addAction(commentAction)
         self.present(alertController, animated: true, completion: nil)
     }
-
+    
     @IBAction func commentButtonTapped(_ sender: Any) {
         presentCommentAlertController()
     }
@@ -73,16 +83,23 @@ class PostDetailTableViewController: UITableViewController {
     
     @IBAction func followButtonTapped(_ sender: Any) {
         guard let post = post else {return}
+        PostController.shared.toggleSubscriptionTo(commentForPost: post) { (success, error) in
+            if let error = error {
+                print("follow button🚒🚒🚒🚒🚒\(error.localizedDescription) \(error) in function: \(#function)🚒🚒🚒🚒🚒")
+                return
+            }
+            self.updateFollowPostButton()
+        }
     }
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return post?.comments.count ?? 0
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath)
-
+        
         // Configure the cell...
         guard let currentComment = post?.comments[indexPath.row] else {return UITableViewCell()}
         
@@ -91,5 +108,5 @@ class PostDetailTableViewController: UITableViewController {
         
         return cell
     }
-
+    
 }
